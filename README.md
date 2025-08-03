@@ -7,20 +7,31 @@
 ## 二、技术选型
 
 基础架构：Flask + LangGraph（多智能体工作流架构）
+
 大型语言模型：DeepSeek-V3（671B 满血版）
+
 嵌入模型：BAAI/bge-m3
+
 知识库：Qdrant（向量存储）
+
 对话记忆存储：Redis
+
 搜索引擎：SearchApi、Tavily
+
 客户端：dingtalk-stream + dingtalkchatbot（钉钉机器人）
+
 全链路监控：LangSmith
+
 一件部署：Docker + Docker Compose
 
 ## 三、技术支持
 
 1、技术文档（架构设计、开发指南、部署方案等）
+
 2、源代码
+
 3、视频教程
+
 ![输入图片说明](docs/images/flyoss_code_run.png)
 
 ## 四、总体设计
