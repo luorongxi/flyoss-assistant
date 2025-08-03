@@ -21,22 +21,22 @@
 1、技术文档（架构设计、开发指南、部署方案等）
 2、源代码
 3、视频教程
-![在这里插入图片描述](https://i-blog.csdnimg.cn/direct/084e4f088d0a4f378925654b88088450.png)
+![输入图片说明](docs/images/flyoss_code_run.png)
 
 ## 四、总体设计
 
 ### 1、系统架构
 
-![在这里插入图片描述](https://i-blog.csdnimg.cn/direct/14b2a3da240b43319a8eb297d0744cd7.png)
+![输入图片说明](docs/images/flyoss_assistant_framework.png)
 
 ### 2、钉钉消息处理流程
-![在这里插入图片描述](https://i-blog.csdnimg.cn/direct/9d1847b74ddc49e382af50e6bf5679d8.png)
+![输入图片说明](docs/images/dingtalk_message_handle.png)
 
 ### 3、Agent决策流程
-![在这里插入图片描述](https://i-blog.csdnimg.cn/direct/af8b6901a74c41c1937e19bb06266d76.png)
+![输入图片说明](docs/images/agent_decision_flow.png)
 
 ### 4、工具执行确认决策流程
-![在这里插入图片描述](https://i-blog.csdnimg.cn/direct/8623976f91784e07b4e574ae0d09d31f.png)
+![输入图片说明](docs/images/tool_confirmation_flow.png)
 
 ## 五、核心功能
 
