@@ -4,6 +4,8 @@
 
 腾飞智能助手是基于钉钉平台的AI助手，集成了大型语言模型、知识库、对话记忆储存和多种工具能力，提供智能问答、任务处理和信息检索服务。深度集成钉钉构建智能待办/日程/日志/审批系统等，实现自然语言到API的自动转换，用户操作步骤减少70%。
 
+**[获取视频教程](https://www.bilibili.com/video/BV1QPbxz2Erf/?spm_id_from=333.1387.homepage.video_card.click&vd_source=1d9ee27ad4b5ca336fdf6e9e4deaf1d9)** 
+
 ## 二、技术选型
 
 基础架构：Flask + LangGraph（多智能体工作流架构）
@@ -96,4 +98,14 @@
 基于Docker-Compose设计生产环境部署方案，优化GPU资源利用率（推理服务资源消耗降低35%），支持秒级弹性伸缩，系统可用性达99.95%。
 
 
+## 创作不易，别忘了点亮Star，你们的支持，是我源源不断的动力。
 
+## 欢迎加入交流群
+
+- 微信公众号
+
+![输入图片说明](docs/images/flyoss_wx_qrcode.jpg)
+
+- QQ技术交流群
+
+![输入图片说明](docs/images/flyoss_qq_qrcode.jpg)
