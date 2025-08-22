@@ -34,7 +34,7 @@
 
 3、视频教程
 
-![输入图片说明](docs/images/flyoss_code_run.png)
+![输入图片说明](docs/images/flyoss_agent_run.png)
 
 ## 四、总体设计
 
@@ -108,4 +108,4 @@
 
 - QQ技术交流群
 
-![QQ技术交流群](docs/images/flyoss_qq_qrcode.jpg)
+![QQ技术交流群](docs/images/flyoss_qq_qrcode.png)
