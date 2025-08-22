@@ -104,8 +104,8 @@
 
 - 微信公众号
 
-![输入图片说明](docs/images/flyoss_wx_qrcode.jpg)
+![微信公众号](docs/images/flyoss_wx_qrcode.jpg)
 
 - QQ技术交流群
 
-![输入图片说明](docs/images/flyoss_qq_qrcode.jpg)
+![QQ技术交流群](docs/images/flyoss_qq_qrcode.jpg)
