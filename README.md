@@ -8,33 +8,37 @@
 
 ## 二、技术选型
 
-基础架构：Flask + LangGraph（多智能体工作流架构）
+### 开发框架
+[![Python 3.12](https://img.shields.io/badge/python-3.12-blue.svg)](https://www.python.org/downloads/)
+[![Flask](https://img.shields.io/badge/Flask-3.1.1-000000.svg?logo=flask&labelColor=white)](https://flask.palletsprojects.com/)
+[![LangGraph](https://img.shields.io/badge/LangGraph-0.5.0-green.svg)](https://langchain.com/langgraph)
 
-大型语言模型：DeepSeek-V3（671B 满血版）
+### AI 组件
+[![DeepSeek](https://img.shields.io/badge/DeepSeek-V3%20671B-0033CC.svg?logo=deepseek&labelColor=white)](https://www.deepseek.com/)
+[![BAAI](https://img.shields.io/badge/BAAI-bge--m3-0033A0.svg?logo=data:image/svg+xml;base64,...)](https://huggingface.co/BAAI/bge-m3)
+[![LangSmith](https://img.shields.io/badge/LangSmith-0.1.147-7A4DDF.svg?logo=LangChain&labelColor=white)](https://smith.langchain.com/)
 
-嵌入模型：BAAI/bge-m3
+### 数据库
+[![Redis](https://img.shields.io/badge/Redis-7.4.0-DC282D.svg?logo=redis)](https://redis.io)
+[![Qdrant](https://img.shields.io/badge/Qdrant-1.14.0-6027C0.svg?logo=data:image/svg+xml;base64,...)](https://qdrant.tech)
 
-知识库：Qdrant（向量存储）
+### 一键部署
+[![Docker Support](https://img.shields.io/badge/Docker_✓-Supported-2496ED?logo=docker&labelColor=white)](https://www.docker.com/)
+[![Docker Compose](https://img.shields.io/badge/Docker_Compose_✓-Supported-2496ED?logo=docker&labelColor=white)](https://docs.docker.com/compose/)
 
-对话记忆存储：Redis
+## 三、核心特性
 
-搜索引擎：SearchApi、Tavily
-
-客户端：dingtalk-stream + dingtalkchatbot（钉钉机器人）
-
-全链路监控：LangSmith
-
-一件部署：Docker + Docker Compose
-
-## 三、技术支持
-
-1、技术文档（架构设计、开发指南、部署方案等）
-
-2、源代码
-
-3、视频教程
-
-![输入图片说明](docs/images/flyoss_agent_run.png)
+- 💬 **智能对话**：基于 DeepSeek-V3 671B 大模型的自然语言理解与生成，支持多轮对话
+- 🧠 **记忆系统**：Redis实现的用户对话历史记忆存储
+- 📚 **知识库集成**：基于 BAAI/bge-m3 嵌入模型，Qdrant向量数据库支持的知识检索
+- 😊 **情感分析**：实时用户情绪侦测
+- 😍 **意图识别**：分析用户意图，触发工作流
+- 🛠️ **工具执行**：基于 LangGraph 架构，支持多工具执行
+- 🎏 **人工干预**：工具执行前进行人机交互，可通过人工干预
+- 🚀 **RAG增强**：知识库和网络搜索结合，提升知识 recall
+- 🔧 **插件系统**：可扩展工具框架，实现动态注册
+- 📊 **可观测性**：LangSmith集成实现全链路监控
+- 🐳 **容器化部署**：Docker一键部署
 
 ## 四、总体设计
 
