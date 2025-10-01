@@ -1,0 +1,16 @@
+# 环境与依赖
+.env
+poetry.lock
+
+# Python 缓存
+**/__pycache__/
+*.py[cod]
+*$py.class
+
+# 日志
+logs/
+*.log
+
+# IDE 配置
+.idea/
+.vscode/
