@@ -3,7 +3,7 @@ name = "flyoss-assistant"
 version = "0.1.0"
 description = "DingTalk AI Assistant with advanced agent capabilities"
 authors = ["Your Name <your.email@example.com>"]
-license = "Apache 2.0"
+license = "AGPL-3.0"
 readme = "README.md"
 packages = [{include = "app"}]
 

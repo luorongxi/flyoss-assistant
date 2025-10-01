@@ -30,7 +30,7 @@ def create_app():
         default_label='主要 API 操作',
         contact='flyoss.ai@flyoss.com',
         contact_url='https://www.flyoss.com',
-        license='Apache 2.0',
+        license='AGPL-3.0',
         license_url='https://opensource.org/license/apache-2-0'
     )
 
