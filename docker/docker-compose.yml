@@ -1,0 +1,88 @@
+services:
+  flyoss:
+    build:
+      context: ..
+      dockerfile: docker/Dockerfile
+    image: flyoss-assistant:latest
+    container_name: flyoss-assistant
+    restart: unless-stopped
+    env_file:
+      - ${ENV_FILE_PATH:-../.env}
+    environment:
+      # UTF-8支持环境变量
+      - LANG=C.UTF-8
+      - LC_ALL=C.UTF-8
+      - PYTHONIOENCODING=utf-8
+      - REDIS_HOST=redis
+      - QDRANT_HOST=qdrant
+    ports:
+      - "8000:8000"
+    depends_on:
+      redis:
+        condition: service_healthy
+      qdrant:
+        condition: service_started
+    volumes:
+      - ../logs:/app/logs
+    networks:
+      - flyoss-net
+    healthcheck:
+      test: ["CMD", "sh", "-c", "curl -fs -o /dev/null -w '%{http_code}' http://localhost:8000/monitoring/health | grep -q 200"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 20s
+
+  redis:
+    image: redis:7.4.5
+    container_name: flyoss-redis
+    restart: unless-stopped
+    env_file:
+      - ${ENV_FILE_PATH:-../.env}
+    command: sh -c 'redis-server --requirepass $$REDIS_PASSWORD'
+    ports:
+      - "6379:6379"
+    volumes:
+      - redis-data:/data
+    networks:
+      - flyoss-net
+    healthcheck:
+      test: >
+        sh -c '
+        if [ -n "$$REDIS_PASSWORD" ]; then
+          redis-cli -a "$$REDIS_PASSWORD" ping | grep PONG
+        else
+          redis-cli ping | grep PONG
+        fi
+        '
+      interval: 10s
+      timeout: 5s
+      retries: 3
+
+  qdrant:
+    image: qdrant/qdrant:v1.14.0
+    container_name: flyoss-qdrant
+    restart: unless-stopped
+    env_file:
+      - ${ENV_FILE_PATH:-../.env}
+    ports:
+      - "6333:6333"
+      - "6334:6334"
+    volumes:
+      - qdrant-data:/storage
+    networks:
+      - flyoss-net
+
+volumes:
+  redis-data:
+    driver: local
+    driver_opts:
+      type: none
+      o: bind
+      device: ./data/redis
+  qdrant-data:
+    driver: local
+
+networks:
+  flyoss-net:
+    driver: bridge
