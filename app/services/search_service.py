@@ -13,6 +13,7 @@ class SearchService:
     def __init__(self):
         self.api_key = config.SERPAPI_KEY
         self.region = config.SEARCH_REGION or "cn"
+        self.max_results = config.MAX_RESULTS
         self.serpapi_wrapper = None
         self._initialize_wrapper()
 
@@ -30,14 +31,15 @@ class SearchService:
                     "engine": "google",
                     "google_domain": "google.com",
                     "gl": self.region,
-                    "hl": "zh-cn" if self.region == "cn" else "en"
+                    "hl": "zh-cn" if self.region == "cn" else "en",
+                    "num": self.max_results,
                 }
             )
             logger.info("SerpAPIWrapper 初始化成功")
         except Exception as e:
             logger.error(f"SerpAPIWrapper 初始化失败: {str(e)}", exc_info=True)
 
-    def web_search(self, query: str, num_results: int = 5) -> List[SearchResult]:
+    def web_search(self, query: str) -> List[SearchResult]:
         """执行网络搜索"""
         try:
             if not self.serpapi_wrapper:

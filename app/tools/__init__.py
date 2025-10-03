@@ -1,5 +1,4 @@
 from .tool_registry import tool_registry
-from .search_tool import WebSearchTool
 from .dingtalk import (
     DingTalkTodoCreateTool,
     DingTalkTodoDeleteTool,
@@ -20,7 +19,6 @@ from .dingtalk import (
 )
 
 # 注册所有工具
-tool_registry.register(WebSearchTool)
 tool_registry.register(DingTalkTodoCreateTool)
 tool_registry.register(DingTalkTodoDeleteTool)
 tool_registry.register(DingTalkTodoUpdateTool)
@@ -40,7 +38,6 @@ tool_registry.register(DingTalkCalendarListAttendeesTool)
 
 __all__ = [
     "tool_registry",
-    "WebSearchTool",
     "DingTalkTodoCreateTool",
     "DingTalkTodoDeleteTool",
     "DingTalkTodoUpdateTool",

@@ -22,8 +22,7 @@ class SearchAgent:
 
             # 执行搜索
             state.search_result = search_service.web_search(
-                query=enhanced_query,
-                num_results=5
+                query=enhanced_query
             )
 
             if state.search_result:

@@ -54,6 +54,7 @@ class Config(BaseSettings):
     # 搜索引擎配置
     SERPAPI_KEY: str = Field("", env="SERPAPI_KEY")
     SEARCH_REGION: str = Field("cn", env="SEARCH_REGION")
+    MAX_RESULTS: int = Field(5, env="MAX_RESULTS")
 
     # 监控配置
     LANGCHAIN_ENDPOINT: str = Field("https://api.smith.langchain.com", env="LANGSMITH_ENDPOINT")
