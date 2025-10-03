@@ -19,13 +19,32 @@ check_service() {
 
   echo "检查 $name 服务 ($host:$port)..."
 
-  until nc -zw 1 "$host" "$port"; do
+  until python -c "
+import socket
+import sys
+import time
+try:
+    start_time = time.time()
+    sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+    sock.settimeout(5)
+    result = sock.connect_ex(('$host', $port))
+    sock.close()
+    if result == 0:
+        print(f'[$name] 连接成功')
+        sys.exit(0)
+    else:
+        print(f'[$name] 连接失败，错误码: {result}')
+        sys.exit(1)
+except Exception as e:
+    print(f'[$name] 连接异常: {str(e)}')
+    sys.exit(1)
+" 2>&1; do
     echo "等待 $name... 尝试 #$((counter+1))/$max_retries"
-    sleep 5  # 增加等待时间到5秒
+    sleep 5
     ((counter++))
 
     if [ $counter -ge $max_retries ]; then
-      echo "错误: $name 服务不可达!" >&2
+      echo "错误: $name 服务在 $((max_retries * 5)) 秒内不可达!" >&2
       exit 1
     fi
   done

@@ -43,7 +43,7 @@ services:
     ports:
       - "6379:6379"
     volumes:
-      - redis-data:/data
+      - ./data/redis:/data
     networks:
       - flyoss-net
     healthcheck:
@@ -69,20 +69,11 @@ services:
       - "6333:6333"
       - "6334:6334"
     volumes:
-      - qdrant-data:/storage
+      - ./data/qdrant:/storage
     networks:
       - flyoss-net
 
-volumes:
-  redis-data:
-    driver: local
-    driver_opts:
-      type: none
-      o: bind
-      device: ./data/redis
-  qdrant-data:
-    driver: local
-
 networks:
   flyoss-net:
+    name: flyoss-net
     driver: bridge
