@@ -52,8 +52,8 @@ class Config(BaseSettings):
     URL_TIMEOUT: float = Field(15.0, env="URL_TIMEOUT")
 
     # 搜索引擎配置
-    SERPAPI_KEY: str = Field("", env="SERPAPI_KEY")
-    SEARCH_REGION: str = Field("cn", env="SEARCH_REGION")
+    TAVILY_API_KEY: str = Field("", env="TAVILY_API_KEY")
+    SEARCH_DEPTH: str = Field("basic", env="SEARCH_DEPTH")
     MAX_RESULTS: int = Field(5, env="MAX_RESULTS")
 
     # 监控配置
