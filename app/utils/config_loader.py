@@ -1,5 +1,7 @@
+import os
+
 from dotenv import load_dotenv
-from pydantic import Field, validator
+from pydantic import Field, field_validator
 from pydantic_settings import BaseSettings
 
 class Config(BaseSettings):
@@ -54,10 +56,10 @@ class Config(BaseSettings):
     SEARCH_REGION: str = Field("cn", env="SEARCH_REGION")
 
     # 监控配置
-    LANGSMITH_ENDPOINT: str = Field("https://api.smith.langchain.com", env="LANGSMITH_ENDPOINT")
-    LANGSMITH_API_KEY: str = Field("", env="LANGSMITH_API_KEY")
-    LANGSMITH_PROJECT: str = Field("flyoss-assistant", env="LANGSMITH_PROJECT")
-    LANGSMITH_TRACING: bool = Field(False, env="LANGSMITH_TRACING")
+    LANGCHAIN_ENDPOINT: str = Field("https://api.smith.langchain.com", env="LANGSMITH_ENDPOINT")
+    LANGCHAIN_API_KEY: str = Field("", env="LANGSMITH_API_KEY")
+    LANGCHAIN_PROJECT: str = Field("flyoss-assistant", env="LANGSMITH_PROJECT")
+    LANGCHAIN_TRACING_V2: bool = Field(False, env="LANGSMITH_TRACING")
 
     # 代理配置
     HTTP_PROXY: str = Field("", env="HTTP_PROXY")
@@ -68,12 +70,24 @@ class Config(BaseSettings):
         env_file_encoding = "utf-8"
         case_sensitive = False
 
-    @validator('LOG_LEVEL')
+    @field_validator('LOG_LEVEL')
+    @classmethod
     def validate_log_level(cls, v):
         valid_levels = ["DEBUG", "INFO", "WARNING", "ERROR", "CRITICAL"]
         if v.upper() not in valid_levels:
             raise ValueError(f"无效的日志级别: {v}，有效值: {', '.join(valid_levels)}")
         return v.upper()
+
+    def setup_langchain_environment(self):
+        """根据当前配置设置 LangChain 环境变量以启用 LangSmith 跟踪"""
+        if self.LANGCHAIN_TRACING_V2 and self.LANGCHAIN_API_KEY:
+            os.environ["LANGCHAIN_TRACING_V2"] = str(self.LANGCHAIN_TRACING_V2).lower()
+            os.environ["LANGCHAIN_API_KEY"] = self.LANGCHAIN_API_KEY
+            os.environ["LANGCHAIN_PROJECT"] = self.LANGCHAIN_PROJECT
+            os.environ["LANGCHAIN_ENDPOINT"] = self.LANGCHAIN_ENDPOINT
+            print(f"LangChain 跟踪已启用：项目 '{self.LANGCHAIN_PROJECT}'")
+        else:
+            print("LangChain 跟踪未启用（缺少 LANGCHAIN_TRACING_V2 或 LANGCHAIN_API_KEY）")
 
 
 # 加载环境变量
@@ -81,6 +95,9 @@ load_dotenv()
 
 # 全局配置实例
 config = Config()
+
+# 应用 LangChain 环境变量
+config.setup_langchain_environment()
 
 def get_config():
     """获取配置实例"""
