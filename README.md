@@ -53,8 +53,8 @@
 ## 📚 开发者指南
 
 ### 开源版
-[![开源版视频教程](https://img.shields.io/badge/CSDN视频教程-点击观看-blue)](https://www.bilibili.com/video/BV1j54y1X7XM)
-[![开源版视频教程](https://img.shields.io/badge/B视频教程-点击观看-blue)](https://www.bilibili.com/video/BV1j54y1X7XM)
+[![开源版视频教程](https://img.shields.io/badge/CSDN视频教程-点击观看-blue)](https://edu.csdn.net/course/detail/40789)
+[![开源版视频教程](https://img.shields.io/badge/B视频教程-点击观看-blue)]()
 
 ### 企业版
 [![专业版视频教程](https://img.shields.io/badge/CSDN视频教程-点击观看-blue)](https://edu.csdn.net/course/detail/40762)
