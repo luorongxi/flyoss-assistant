@@ -54,7 +54,7 @@
 
 ### 开源版
 [![开源版视频教程](https://img.shields.io/badge/CSDN视频教程-点击观看-blue)](https://edu.csdn.net/course/detail/40789)
-[![开源版视频教程](https://img.shields.io/badge/B视频教程-点击观看-blue)]()
+[![开源版视频教程](https://img.shields.io/badge/B视频教程-点击观看-blue)](https://www.bilibili.com/cheese/play/ss956948817?csource=private_space_class_null&spm_id_from=333.1387.0.0)
 
 ### 企业版
 [![专业版视频教程](https://img.shields.io/badge/CSDN视频教程-点击观看-blue)](https://edu.csdn.net/course/detail/40762)
